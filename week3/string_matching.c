@@ -3,15 +3,15 @@
 
 int string_match(char *t, char *p, int n, int m) {
 	int i, j, count=0;
-	for(i=0; i<n-m; i++) {
+	for(i=0; i<n-m+1; i++) {
 		j = 0;
-		while(j<m && *(p+j)==*(t+i+j)) {
+		while(j<m) {
 			count++;
+			if(*(p+j)!=*(t+i+j)) break;
 			j++;
 		}
 		
 		if(j==m) return count;
-		count++;
 	}
 	
 	return count;
